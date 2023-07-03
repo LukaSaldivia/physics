@@ -75,20 +75,13 @@ class Circle{
             this.ypos += this.yd
             this.xpos += this.xd
 
-            this.ypos += this.mass**1/2
+            this.ypos += this.mass/2
             this.yd += Math.sqrt(G)
 
 
-            if(this.xd !== 0){
-                this.xd += (-(this.xd / Math.abs(this.xd)) / this.mass) / Math.sqrt(G)
-
-                if(Math.floor(this.xd) == 0) {
-                    this.xd = 0
-                }
+            this.xd += (-(this.xd / (Math.abs(this.xd)+1)) / this.mass) / Math.sqrt(G)
 
                 
-            }
-
             
 
 
@@ -123,7 +116,7 @@ class Circle{
         if(this.xpos - this.r < 0){
             this.xpos = this.r;
             this.xd*= -1
-            this.xd /= 1+(1/this.mass)
+            this.xd /= 1+(1/this.mass*G)
         }
 
 
